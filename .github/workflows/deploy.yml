@@ -13,8 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+          cp docs/qa-guide.html _site/index.html
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          python-version: '3.x'
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
