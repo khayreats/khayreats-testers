@@ -1,5 +1,7 @@
 # Customer app QA guide
 
+**App version: v1.1.1+29**
+
 Quick checklist for testing the KhayrEats customer app. Work through each section and tick off items as you go.
 
 ---

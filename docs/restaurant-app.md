@@ -1,5 +1,7 @@
 # Restaurant app QA guide
 
+**App version: v1.1.1+29**
+
 Testing guide for the KhayrEats restaurant app. Work through each section in order for a full sign-up to order flow test.
 
 ---
