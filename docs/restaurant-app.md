@@ -4,7 +4,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 ---
 
-## New restaurant sign-up
+## 1. New restaurant sign-up
 
 ### Step 1: account creation
 
@@ -38,7 +38,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 ---
 
-## Login & authentication
+## 2. Login & authentication
 
 - [ ] Valid email / password → goes to dashboard
 - [ ] Wrong credentials → shows error
@@ -48,7 +48,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 ---
 
-## Dashboard
+## 3. Dashboard
 
 - [ ] Loads for approved restaurants only
 - [ ] Shows restaurant name and logo
@@ -57,7 +57,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 ---
 
-## Order management
+## 4. Order management
 
 ### Active orders
 
@@ -82,7 +82,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 ---
 
-## KhayrBox management
+## 5. KhayrBox management
 
 ### View all boxes
 
@@ -130,7 +130,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 ---
 
-## Restaurant profile
+## 6. Restaurant profile
 
 ### View profile
 
@@ -152,7 +152,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 ---
 
-## Error scenarios
+## 7. Error scenarios
 
 - [ ] Invalid email format → validation error shown
 - [ ] Passwords don't match → error message shown
@@ -163,11 +163,24 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 ---
 
-## Integration checks
+## 8. Integration checks
 
 - [ ] Orders from customers appear in restaurant app
 - [ ] Profile changes save to database
 - [ ] Images upload to Firebase correctly
+
+---
+
+## Release checklist
+
+- [ ] Sign-up flow works end to end
+- [ ] Login and authentication work
+- [ ] Dashboard loads correctly
+- [ ] Orders can be viewed and marked as picked up
+- [ ] KhayrBoxes can be created, edited, and deactivated
+- [ ] Profile can be viewed and updated
+- [ ] Error states are handled gracefully
+- [ ] Integration with customer app and database works
 
 ---
 
