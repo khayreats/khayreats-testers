@@ -1,0 +1,16 @@
+site_name: KhayrEats QA Guides
+site_description: Testing guides for the KhayrEats app
+theme:
+  name: material
+  palette:
+    primary: teal
+    accent: teal
+  features:
+    - navigation.tabs
+    - navigation.top
+    - toc.integrate
+
+nav:
+  - Home: index.md
+  - Customer app: customer-app.md
+  - Restaurant app: restaurant-app.md
