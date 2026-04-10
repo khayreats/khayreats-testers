@@ -67,6 +67,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 - [ ] Each order shows: customer name, phone, box name, price, pickup time
 - [ ] Tap order → goes to details page
 - [ ] "Mark as Picked Up" button works
+- [ ] Cancel button opens dialog box and then WhatsApp
 - [ ] After marking → order moves to past orders
 
 ### Past orders
@@ -79,7 +80,6 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 
 - [ ] Shows full order info
 - [ ] Customer phone number is clickable to call
-- [ ] "Mark as Picked Up" → confirmation dialog appears
 - [ ] Confirm → status changes to completed
 
 ---
@@ -118,12 +118,6 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 - [ ] "Publish" → creates box
 - [ ] Box appears in list as "Active"
 
-### Edit box
-
-- [ ] "Edit" button on box card
-- [ ] Same 4-step flow with pre-filled data
-- [ ] Save changes → updates box
-
 ### Deactivate box
 
 - [ ] "Deactivate" button → confirmation dialog appears
@@ -137,31 +131,11 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 ### View profile
 
 - [ ] Shows: name, logo, email, phone, IBAN (masked), category
-- [ ] Account status shows correctly (Approved / Pending / Suspended)
-
-### Edit profile
-
-- [ ] "Edit Profile" button works
-- [ ] Can update any field (name, email, phone, etc.)
-- [ ] Can change logo
-- [ ] Save → updates profile
 
 ### Other features
 
 - [ ] "Manage Khayr Boxes" link → goes to box management
-- [ ] Language selector (EN / AR) works
 - [ ] Logout button → goes to login
-
----
-
-## 7. Error scenarios
-
-- [ ] Invalid email format → validation error shown
-- [ ] Passwords don't match → error message shown
-- [ ] Image upload fails → retry option appears
-- [ ] Try to access dashboard when pending → blocked
-- [ ] Mark order picked up twice → no crash
-- [ ] Create box with missing required fields → validation triggered
 
 ---
 
