@@ -1,461 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KhayrEats QA Guides</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; min-height: 100vh; }
+    .header { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 1.25rem 1.5rem; }
+    .header h1 { font-size: 18px; font-weight: 600; color: #111; }
+    .header p { font-size: 13px; color: #666; margin-top: 3px; }
+    .tabs { display: flex; background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 1.5rem; }
+    .tab { padding: 10px 16px; font-size: 14px; color: #666; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s; }
+    .tab.active { color: #111; border-bottom-color: #111; font-weight: 500; }
+    .content { padding: 1.25rem 1.5rem; max-width: 680px; margin: 0 auto; }
+    .overall-progress { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; }
+    .overall-label { font-size: 13px; color: #666; margin-bottom: 4px; }
+    .overall-count { font-size: 24px; font-weight: 600; color: #111; }
+    .section { margin-bottom: 1.75rem; }
+    .section-title { font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; padding-bottom: 6px; border-bottom: 1px solid #e5e5e5; }
+    .checklist { display: flex; flex-direction: column; gap: 2px; }
+    .check-item { display: flex; align-items: flex-start; gap: 10px; padding: 9px 10px; border-radius: 8px; background: #fff; border: 1px solid #e5e5e5; cursor: pointer; transition: background 0.1s; -webkit-tap-highlight-color: transparent; user-select: none; }
+    .check-item:active { background: #f5f5f5; }
+    .check-item.done { opacity: 0.5; }
+    .check-item.done .check-label { text-decoration: line-through; color: #999; }
+    .checkbox { width: 18px; height: 18px; min-width: 18px; border-radius: 4px; border: 1.5px solid #ccc; display: flex; align-items: center; justify-content: center; margin-top: 1px; transition: all 0.15s; flex-shrink: 0; }
+    .check-item.done .checkbox { background: #555; border-color: #555; }
+    .checkmark { display: none; }
+    .check-item.done .checkmark { display: block; }
+    .check-label { font-size: 14px; color: #111; line-height: 1.4; }
+    .progress-row { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
+    .progress-bar-wrap { background: #e5e5e5; border-radius: 4px; height: 4px; margin-top: 8px; overflow: hidden; }
+    .progress-bar { height: 4px; background: #111; border-radius: 4px; transition: width 0.3s; }
+    .progress-label { font-size: 12px; color: #888; }
+    .reset-btn { font-size: 12px; color: #bbb; cursor: pointer; }
+    .reset-btn:hover { color: #888; }
+    .version-badge { display: inline-block; font-size: 12px; color: #888; background: #f0f0f0; border: 1px solid #e0e0e0; border-radius: 5px; padding: 2px 8px; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="Testing guides for the KhayrEats app">
-      
-      
-      
-      
-      
-        <link rel="next" href="customer-app/">
-      
-      
-        
-      
-      
-      <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
-    
-    
-      
-        <title>KhayrEats QA Guides</title>
-      
-    
-    
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
-      
-        
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
-      
-      
-
-
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#khayreats-qa-guides" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="KhayrEats QA Guides" class="md-header__button md-logo" aria-label="KhayrEats QA Guides" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            KhayrEats QA Guides
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Home
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-      
-    
-    
-    
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="header">
+  <h1>KhayrEats QA guides</h1>
+  <p>Tap each item to mark as done. Progress saves in your browser.</p>
 </div>
-      
-    
-    
-  </nav>
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Home
 
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="customer-app/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Customer app
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="restaurant-app/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Restaurant app
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="." title="KhayrEats QA Guides" class="md-nav__button md-logo" aria-label="KhayrEats QA Guides" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    KhayrEats QA Guides
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="customer-app/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Customer app
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="restaurant-app/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Restaurant app
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-
-<h1 id="khayreats-qa-guides">KhayrEats QA guides</h1>
-<p>Welcome. Use the tabs above to navigate between the two testing guides.</p>
-<table>
-<thead>
-<tr>
-<th>Guide</th>
-<th>Who it's for</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="customer-app/">Customer app</a></td>
-<td>Testers checking the customer-facing app</td>
-</tr>
-<tr>
-<td><a href="restaurant-app/">Restaurant app</a></td>
-<td>Testers checking the restaurant partner app</td>
-</tr>
-</tbody>
-</table>
-<p>Report any issues to the KhayrEats team.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
-        </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
-</button>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
+<div class="tabs">
+  <div class="tab active" data-tab="customer" onclick="switchTab('customer', this)">Customer app</div>
+  <div class="tab" data-tab="restaurant" onclick="switchTab('restaurant', this)">Restaurant app</div>
 </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.top", "toc.integrate"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-    
-    
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
-      
-    
-  </body>
+
+<div class="content" id="content-customer"></div>
+<div class="content" id="content-restaurant" style="display:none"></div>
+
+<svg style="display:none">
+  <symbol id="check-icon" viewBox="0 0 10 10">
+    <polyline points="1.5,5 4,7.5 8.5,2.5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<script>
+const guides = {
+  customer: {
+    version: "v1.1.1+29",
+    sections: [
+      {
+        title: "Sign up / login",
+        items: [
+          "Open app and confirm entry screen appears",
+          "Sign up with valid details",
+          "Ensure email verification triggers",
+          "Login with verified account",
+          "Test invalid email / password cases",
+          "Test forgot password flow"
+        ]
+      },
+      {
+        title: "Location",
+        items: [
+          "Grant location permissions",
+          "Confirm map loads and current location is shown",
+          "Search for a pickup location and save it",
+          "Verify KhayrBoxes update for the selected location"
+        ]
+      },
+      {
+        title: "Browse KhayrBoxes",
+        items: [
+          "View available boxes for today and tomorrow",
+          "Scroll through the feed",
+          "Search for boxes",
+          "Open a box detail page",
+          "Confirm details, restaurant info, price, and images"
+        ]
+      },
+      {
+        title: "Order / checkout",
+        items: [
+          "Start order from box detail page",
+          "Verify checkout summary and pickup time",
+          "Complete payment with a valid method",
+          "Confirm order success message",
+          "Check the order appears in history"
+        ]
+      },
+      {
+        title: "Order tracking",
+        items: [
+          "Open the orders tab",
+          "View current and past orders",
+          "Open an active order and confirm tracking details",
+          "Check order status updates",
+          "Test cancellation flow if available"
+        ]
+      },
+      {
+        title: "Profile & settings",
+        items: [
+          "Open profile page",
+          "Update profile info and save",
+          "Change password successfully",
+          "Test account deletion flow if present"
+        ]
+      },
+      {
+        title: "Feedback",
+        items: [
+          "Find the feedback screen",
+          "Submit a rating / comment",
+          "Confirm submission success"
+        ]
+      },
+      {
+        title: "Navigation / UI",
+        items: [
+          "Use bottom navigation tabs",
+          "Confirm the active tab highlights correctly",
+          "Check that back navigation works",
+          "Verify UI looks good on both phone and tablet sizes"
+        ]
+      },
+      {
+        title: "Release checklist",
+        items: [
+          "Sign up / login works",
+          "Location and map work",
+          "Browsing and details work",
+          "Checkout and payment work",
+          "Order history and tracking work",
+          "Profile settings work",
+          "Feedback submission works",
+          "App is usable on different screen sizes"
+        ]
+      }
+    ]
+  },
+  restaurant: {
+    version: "v1.1.1+29",
+    sections: [
+      {
+        title: "Sign-up — step 1: account creation",
+        items: [
+          "Enter restaurant name, email, phone, password",
+          "Password confirmation matches",
+          "\"Next\" button works → goes to step 2"
+        ]
+      },
+      {
+        title: "Step 2: business details",
+        items: [
+          "Enter IBAN (bank account)",
+          "Enter commercial registration number",
+          "Select food category from dropdown",
+          "\"Next\" button works → goes to step 3"
+        ]
+      },
+      {
+        title: "Step 3: logo & terms",
+        items: [
+          "Upload restaurant logo (image picker works)",
+          "Check \"I agree to terms\" checkbox",
+          "\"Create Account\" button works → goes to location setup"
+        ]
+      },
+      {
+        title: "Step 4: location setup",
+        items: [
+          "Google Maps loads",
+          "Search for address or select on map",
+          "Confirm location → goes to waiting page"
+        ]
+      },
+      {
+        title: "Step 5: waiting for approval",
+        items: [
+          "Shows \"pending approval\" message",
+          "Can't access dashboard until admin approves"
+        ]
+      },
+      {
+        title: "Login & authentication",
+        items: [
+          "Valid email / password → goes to dashboard",
+          "Wrong credentials → shows error",
+          "Customer account → redirected to customer app",
+          "Pending restaurant → stays on waiting page",
+          "Suspended restaurant → shows suspension message"
+        ]
+      },
+      {
+        title: "Dashboard",
+        items: [
+          "Loads for approved restaurants only",
+          "Shows restaurant name and logo",
+          "Bottom navigation: Dashboard | Orders | Profile",
+          "Quick links to manage orders and boxes"
+        ]
+      },
+      {
+        title: "Active orders",
+        items: [
+          "Shows list of pending orders",
+          "Each order shows: customer name, phone, box name, price, pickup time",
+          "Tap order → goes to details page",
+          "\"Mark as Picked Up\" button works",
+          "Cancel button opens dialog box and then WhatsApp",
+          "After marking → order moves to past orders"
+        ]
+      },
+      {
+        title: "Past orders",
+        items: [
+          "Shows completed orders",
+          "Same info as active orders",
+          "Historical data loads correctly"
+        ]
+      },
+      {
+        title: "Order details page",
+        items: [
+          "Shows full order info",
+          "Customer phone number is clickable to call",
+          "Confirm → status changes to completed"
+        ]
+      },
+      {
+        title: "View all boxes",
+        items: [
+          "Shows list of restaurant's boxes",
+          "Each box shows: title, description, image, pickup times, status, price",
+          "\"Create New Box\" button → starts creation flow"
+        ]
+      },
+      {
+        title: "Create new box — step 1: size",
+        items: [
+          "Choose Small / Medium / Large",
+          "\"Next\" → goes to step 2"
+        ]
+      },
+      {
+        title: "Step 2: description",
+        items: [
+          "Enter title and description",
+          "Upload image",
+          "\"Next\" → goes to step 3"
+        ]
+      },
+      {
+        title: "Step 3: schedule",
+        items: [
+          "Select days of week (Sun–Sat)",
+          "Set pickup start / end times",
+          "Set max daily boxes",
+          "\"Next\" → goes to step 4"
+        ]
+      },
+      {
+        title: "Step 4: review",
+        items: [
+          "Shows all entered info",
+          "\"Publish\" → creates box",
+          "Box appears in list as \"Active\""
+        ]
+      },
+      {
+        title: "Deactivate box",
+        items: [
+          "\"Deactivate\" button → confirmation dialog appears",
+          "Confirm → box becomes inactive",
+          "Removed from active list"
+        ]
+      },
+      {
+        title: "Restaurant profile",
+        items: [
+          "Shows: name, logo, email, phone, IBAN (masked), category",
+          "\"Manage Khayr Boxes\" link → goes to box management",
+          "Logout button → goes to login"
+        ]
+      },
+      {
+        title: "Integration checks",
+        items: [
+          "Orders from customers appear in restaurant app",
+          "Profile changes save to database",
+          "Images upload to Firebase correctly"
+        ]
+      },
+      {
+        title: "Release checklist",
+        items: [
+          "Sign-up flow works end to end",
+          "Login and authentication work",
+          "Dashboard loads correctly",
+          "Orders can be viewed and marked as picked up",
+          "KhayrBoxes can be created, edited, and deactivated",
+          "Profile can be viewed and updated",
+          "Error states are handled gracefully",
+          "Integration with customer app and database works"
+        ]
+      }
+    ]
+  }
+};
+
+const state = {
+  customer: JSON.parse(localStorage.getItem('khayr-qa-customer') || '{}'),
+  restaurant: JSON.parse(localStorage.getItem('khayr-qa-restaurant') || '{}')
+};
+
+function key(tab, si, ii) { return `${tab}-${si}-${ii}`; }
+function save(tab) { localStorage.setItem(`khayr-qa-${tab}`, JSON.stringify(state[tab])); }
+
+function buildGuide(tab) {
+  const container = document.getElementById(`content-${tab}`);
+  const guide = guides[tab];
+
+  // Version badge
+  const badge = document.createElement('div');
+  badge.className = 'version-badge';
+  badge.style.marginTop = '1rem';
+  badge.textContent = guide.version;
+  container.appendChild(badge);
+
+  // Overall progress
+  const overall = document.createElement('div');
+  overall.className = 'overall-progress';
+  overall.innerHTML = `
+    <div class="overall-label">Overall progress</div>
+    <div class="overall-count" id="overall-count-${tab}">0 / 0</div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="overall-bar-${tab}" style="width:0%"></div></div>
+  `;
+  container.appendChild(overall);
+
+  guide.sections.forEach((section, si) => {
+    const sec = document.createElement('div');
+    sec.className = 'section';
+
+    const titleEl = document.createElement('div');
+    titleEl.className = 'section-title';
+    titleEl.textContent = section.title;
+    sec.appendChild(titleEl);
+
+    const list = document.createElement('div');
+    list.className = 'checklist';
+    list.id = `${tab}-s${si}`;
+
+    section.items.forEach((item, ii) => {
+      const done = !!state[tab][key(tab, si, ii)];
+      const div = document.createElement('div');
+      div.className = 'check-item' + (done ? ' done' : '');
+      div.id = `item-${tab}-${si}-${ii}`;
+      div.innerHTML = `
+        <div class="checkbox">
+          <svg class="checkmark" width="10" height="10" viewBox="0 0 10 10">
+            <use href="#check-icon"/>
+          </svg>
+        </div>
+        <span class="check-label">${item}</span>
+      `;
+      div.addEventListener('click', () => toggle(tab, si, ii));
+      list.appendChild(div);
+    });
+
+    sec.appendChild(list);
+
+    const progBar = document.createElement('div');
+    progBar.className = 'progress-bar-wrap';
+    progBar.innerHTML = `<div class="progress-bar" id="${tab}-bar${si}" style="width:0%"></div>`;
+    sec.appendChild(progBar);
+
+    const progRow = document.createElement('div');
+    progRow.className = 'progress-row';
+    progRow.innerHTML = `
+      <span class="progress-label" id="${tab}-prog${si}">0 / ${section.items.length}</span>
+      <span class="reset-btn" onclick="resetSection('${tab}',${si})">reset</span>
+    `;
+    sec.appendChild(progRow);
+
+    container.appendChild(sec);
+    updateSection(tab, si);
+  });
+
+  updateOverall(tab);
+}
+
+function toggle(tab, si, ii) {
+  const k = key(tab, si, ii);
+  state[tab][k] = !state[tab][k];
+  save(tab);
+  document.getElementById(`item-${tab}-${si}-${ii}`).classList.toggle('done', !!state[tab][k]);
+  updateSection(tab, si);
+  updateOverall(tab);
+}
+
+function resetSection(tab, si) {
+  guides[tab].sections[si].items.forEach((_, ii) => {
+    delete state[tab][key(tab, si, ii)];
+    document.getElementById(`item-${tab}-${si}-${ii}`).classList.remove('done');
+  });
+  save(tab);
+  updateSection(tab, si);
+  updateOverall(tab);
+}
+
+function updateSection(tab, si) {
+  const items = guides[tab].sections[si].items;
+  const done = items.filter((_, ii) => !!state[tab][key(tab, si, ii)]).length;
+  const total = items.length;
+  document.getElementById(`${tab}-prog${si}`).textContent = `${done} / ${total}`;
+  document.getElementById(`${tab}-bar${si}`).style.width = `${Math.round(done / total * 100)}%`;
+}
+
+function updateOverall(tab) {
+  let done = 0, total = 0;
+  guides[tab].sections.forEach((section, si) => {
+    section.items.forEach((_, ii) => {
+      total++;
+      if (state[tab][key(tab, si, ii)]) done++;
+    });
+  });
+  document.getElementById(`overall-count-${tab}`).textContent = `${done} / ${total}`;
+  document.getElementById(`overall-bar-${tab}`).style.width = `${Math.round(done / total * 100)}%`;
+}
+
+function switchTab(tab, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('content-customer').style.display = tab === 'customer' ? '' : 'none';
+  document.getElementById('content-restaurant').style.display = tab === 'restaurant' ? '' : 'none';
+}
+
+buildGuide('customer');
+buildGuide('restaurant');
+</script>
+</body>
 </html>
