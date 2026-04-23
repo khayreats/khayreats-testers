@@ -1,8 +1,23 @@
 # Restaurant app QA guide
 
-**App version: v1.1.1+29**
+**App version: v1.2.0**
 
 Testing guide for the KhayrEats restaurant app. Work through each section in order for a full sign-up to order flow test.
+
+---
+
+## What's new in v1.2.0
+
+Use this section to test only the new features in this release.
+
+### Higher-resolution image uploads (see [KhayrBox management](#5-khayrbox-management) and [New restaurant sign-up](#1-new-restaurant-sign-up))
+
+Images can now be uploaded at **1080×1080** (previously capped at 200×200).
+
+- [ ] During sign-up, upload a logo image at 1080×1080 — confirm it uploads and displays correctly
+- [ ] When creating a KhayrBox, upload a box image at 1080×1080 — confirm it uploads and displays correctly
+- [ ] Confirm images are not blurry or distorted after upload
+- [ ] Try uploading an image below the old limit (e.g. 200×200) — confirm it still works
 
 ---
 
@@ -24,6 +39,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 ### Step 3: logo & terms
 
 - [ ] Upload restaurant logo (image picker works)
+- [ ] Upload a logo at 1080×1080 — confirm it displays correctly without distortion
 - [ ] Check "I agree to terms" checkbox
 - [ ] "Create Account" button works → goes to location setup
 
@@ -102,7 +118,7 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 **Step 2: description**
 
 - [ ] Enter title and description
-- [ ] Upload image
+- [ ] Upload image at 1080×1080 — confirm it uploads and displays correctly
 - [ ] "Next" → goes to step 3
 
 **Step 3: schedule**
@@ -150,10 +166,12 @@ Testing guide for the KhayrEats restaurant app. Work through each section in ord
 ## Release checklist
 
 - [ ] Sign-up flow works end to end
+- [ ] Logo upload accepts 1080×1080 images and displays them correctly
 - [ ] Login and authentication work
 - [ ] Dashboard loads correctly
 - [ ] Orders can be viewed and marked as picked up
-- [ ] KhayrBoxes can be created, edited, and deactivated
+- [ ] KhayrBoxes can be created with 1080×1080 images
+- [ ] KhayrBoxes can be edited and deactivated
 - [ ] Profile can be viewed and updated
 - [ ] Error states are handled gracefully
 - [ ] Integration with customer app and database works
