@@ -62,8 +62,23 @@
 <script>
 const guides = {
   customer: {
-    version: "v1.1.1+29",
+    version: "v1.2.0",
     sections: [
+      {
+        title: "What's new in v1.2.0",
+        items: [
+          "Find a box with no remaining stock — confirm it shows \"Sold out\" (not \"0 left\")",
+          "Open a box detail page and tap reserve — confirm a collapsible \"Ingredients & allergens\" section is present",
+          "Tap the section — confirm it expands and shows content; tap again — confirm it collapses",
+          "Open the reserve page and confirm there is visible space above the box description / main text",
+          "Go to the orders tab — confirm restaurant names are not cut off or overflowing their container",
+          "Confirm active and past orders appear in a single unified list",
+          "Use an account with no orders — confirm the empty state on the orders page matches the updated design",
+          "Open an active order — confirm a \"Mark as picked up\" button is present",
+          "Tap \"Mark as picked up\" — confirm the order moves to past orders",
+          "Check past orders show the actual date (e.g. \"Apr 20\") rather than a relative label like \"Tomorrow\""
+        ]
+      },
       {
         title: "Sign up / login",
         items: [
@@ -91,13 +106,17 @@ const guides = {
           "Scroll through the feed",
           "Search for boxes",
           "Open a box detail page",
-          "Confirm details, restaurant info, price, and images"
+          "Confirm details, restaurant info, price, and images",
+          "Find a box with no stock remaining — confirm it shows \"Sold out\" (not \"0 left\")"
         ]
       },
       {
         title: "Order / checkout",
         items: [
           "Start order from box detail page",
+          "Confirm there is visible space above the main text on the reserve page",
+          "Confirm the \"Ingredients & allergens\" collapsible section is present on the reserve page",
+          "Tap it — confirm it expands and shows content; tap again — confirm it collapses",
           "Verify checkout summary and pickup time",
           "Complete payment with a valid method",
           "Confirm order success message",
@@ -108,9 +127,13 @@ const guides = {
         title: "Order tracking",
         items: [
           "Open the orders tab",
-          "View current and past orders",
+          "Confirm active and past orders appear in a single unified list",
+          "Confirm restaurant names on order cards are not cut off or overflowing",
+          "On an account with no orders, confirm the empty state looks correct",
           "Open an active order and confirm tracking details",
-          "Check order status updates",
+          "Confirm the \"Mark as picked up\" button is present on an active order",
+          "Tap \"Mark as picked up\" — confirm the order moves to past orders",
+          "Check past orders show the actual date (e.g. \"Apr 20\") rather than a relative label like \"Tomorrow\"",
           "Test cancellation flow if available"
         ]
       },
@@ -136,14 +159,38 @@ const guides = {
         items: [
           "Use bottom navigation tabs",
           "Confirm the active tab highlights correctly",
-          "Check that back navigation works"
+          "Check that back navigation works",
+          "Verify UI looks good on both phone and tablet sizes"
+        ]
+      },
+      {
+        title: "Release checklist",
+        items: [
+          "Sign up / login works",
+          "Location and map work",
+          "Browsing and details work — sold out label shows correctly",
+          "Reserve page has ingredients & allergens section and correct spacing",
+          "Checkout and payment work",
+          "Orders page: unified view, correct date labels, no restaurant name overflow",
+          "Customer can mark order as picked up",
+          "Empty state on orders page looks correct",
+          "Profile settings work",
+          "Feedback submission works",
+          "App is usable on different screen sizes"
         ]
       }
     ]
   },
   restaurant: {
-    version: "v1.1.1+29",
+    version: "v1.2.0",
     sections: [
+      {
+        title: "What's new in v1.2.0",
+        items: [
+          "When creating a KhayrBox, upload a box image at 1080×1080 — confirm it uploads and displays correctly",
+          "Confirm images are not blurry or distorted after upload",
+        ]
+      },
       {
         title: "Sign-up — step 1: account creation",
         items: [
@@ -249,7 +296,7 @@ const guides = {
         title: "Step 2: description",
         items: [
           "Enter title and description",
-          "Upload image",
+          "Upload image at 1080×1080 — confirm it uploads and displays correctly",
           "\"Next\" → goes to step 3"
         ]
       },
@@ -301,7 +348,8 @@ const guides = {
           "Login and authentication work",
           "Dashboard loads correctly",
           "Orders can be viewed and marked as picked up",
-          "KhayrBoxes can be created, edited, and deactivated",
+          "KhayrBoxes can be created with 1080×1080 images",
+          "KhayrBoxes can be deactivated",
           "Profile can be viewed and updated",
           "Error states are handled gracefully",
           "Integration with customer app and database works"
